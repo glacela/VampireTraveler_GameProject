@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     SpriteRenderer sp;
 
     public Animator animator;
+    public GameObject infoMove, infoJump, infoSwitch, dialogueThing, shopObject;
     PlayerSwitch switchScript;
 
     private void Awake()
@@ -24,16 +25,22 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         switchScript = FindObjectOfType<PlayerSwitch>();
+        infoMove.gameObject.SetActive (true);
+        infoJump.gameObject.SetActive (true);
+        infoSwitch.gameObject.SetActive (true);
+        dialogueThing.gameObject.SetActive (false);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && transform.name == "vampire")
         {
-           pcJump();
+            pcJump();
+            infoJump.gameObject.SetActive (false);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
+            infoSwitch.gameObject.SetActive (false);
             switchScript.SwitchPlayer();
         }
     }
@@ -43,6 +50,7 @@ public class PlayerMove : MonoBehaviour
         xIn = Input.GetAxis("Horizontal");
         if (Mathf.Abs(xIn) > 0.1f)
         {
+            infoMove.gameObject.SetActive (false);
             animator.SetBool("isWalking", true); // this could be done simply with Play, but don't have time to get into that
         }
         else
@@ -57,6 +65,15 @@ public class PlayerMove : MonoBehaviour
 
         pcMove();
         pcTurn();
+    }
+
+    private void OnTriggerStay2D(Collider2D shopObject)
+    {
+        Debug.Log("We are colliding");
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+                dialogueThing.gameObject.SetActive (true);
+        }
     }
 
     void pcJump()
