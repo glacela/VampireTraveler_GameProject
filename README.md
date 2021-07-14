@@ -2,6 +2,8 @@
 ![scifiheader](https://user-images.githubusercontent.com/47727027/125181144-85f66580-e20a-11eb-8738-8ecfcebc46af.png)
 # Vampire Traveler
 
+![Play on itch.io](https://glacebon.itch.io/vampyyri-rise)
+
 Very unfinished soloproject for Gamerella Global 2021 game jam. The theme was "Journey".
 
 The jam was less than a week after Pride Game Jam 2021 so I didn't have a lot of juice left.
